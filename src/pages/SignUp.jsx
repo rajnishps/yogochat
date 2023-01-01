@@ -13,16 +13,19 @@ export default function SignUp() {
             className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded"
             type="text"
             placeholder="Email"
+            required
           />
           <input
             className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded"
             type="password"
             placeholder="Password"
+            required
           />
           <input
             className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded"
             type="password"
             placeholder="Confirm Password"
+            required
           />
           <div className="flex justify-between"></div>
           <button

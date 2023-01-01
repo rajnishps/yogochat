@@ -5,28 +5,28 @@ export default function SignIn() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
   const onSubmit = (data) => console.log(data)
 
-  const email = watch("email")
-  const pass1 = watch("pass1")
-  const remember = watch("remember")
-
   return (
     <section className="flex justify-center">
-      <div className="flex flex-col items-center h-screen w-400">
-        <h1 className="font-bold mt-24 mb-14 text-white text-8xl">YOGO</h1>
-        <h3 className="mb-14 tracking-widest	font-bold letter text-white text-2xl">
+      <div className="flex flex-col justify-center items-center h-screen w-400">
+        <Link to="/">
+          <h1 className="font-bold mb-14 text-8xl">YOGO</h1>
+        </Link>
+        <h3 className="mb-14 tracking-widest	font-bold letter text-2xl">
           Sign Up to start chatting as you Go
         </h3>
+        <h2 className="mb-8 tracking-widest	font-bold letter text-4xl">
+          SIGN IN
+        </h2>
         <form
           className="flex w-full flex-col"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
-            className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
+            className="p-8 mt-8 text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -35,17 +35,13 @@ export default function SignIn() {
             })}
           />
           {errors.email && errors.email.type === "required" && (
-            <p className="pr-4 text-xl text-right text-slate-50">
-              Email is required.
-            </p>
+            <p className="pr-4 text-xl text-right">Email is required.</p>
           )}
           {errors.email && errors.email.type === "pattern" && (
-            <p className="pr-4 text-xl text-right text-slate-50">
-              Email is not valid.
-            </p>
+            <p className="pr-4 text-xl text-right">Email is not valid.</p>
           )}
           <input
-            className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
+            className="p-8 mt-8 text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
             type="password"
             placeholder="Password"
             id="password"
@@ -55,14 +51,10 @@ export default function SignIn() {
             })}
           />
           {errors?.pass1?.type === "required" && (
-            <p className="pr-4 text-xl text-right text-slate-50">
-              This field is required
-            </p>
+            <p className="pr-4 text-xl text-right">This field is required</p>
           )}
           {errors?.pass1?.type === "minLength" && (
-            <p className="pr-4 text-xl text-right text-slate-50">
-              Password too short
-            </p>
+            <p className="pr-4 text-xl text-right">Password too short</p>
           )}
           <div className="flex justify-between">
             <label
@@ -70,7 +62,7 @@ export default function SignIn() {
               htmlFor="remember"
             >
               <input
-                className="mr-4"
+                className="mr-4 "
                 type="checkbox"
                 name="remember"
                 id="remember"
@@ -83,16 +75,13 @@ export default function SignIn() {
             </a>
           </div>
           <button
-            className=" mt-4 tracking-widest font-bold text-white text-2xl text-center m-2 h-20 bg-slate-700 bg-opacity-80 rounded-2xl"
+            className=" mt-4 tracking-widest font-bold text-2xl text-center m-2 h-20 bg-slate-700 bg-opacity-80 rounded-2xl"
             type="submit"
           >
             SIGN IN
           </button>
-          <Link
-            className=" p-8 text-slate-50  text-2xl w-full text-center"
-            to="/signup"
-          >
-            Not a user? Sign Up
+          <Link className=" p-8  text-2xl w-full text-center" to="/signup">
+            Dont have an account? Sign Up
           </Link>
         </form>
       </div>

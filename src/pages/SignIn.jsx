@@ -25,27 +25,50 @@ export default function SignIn() {
           className="flex w-full flex-col"
           onSubmit={handleSubmit(onSubmit)}
         >
-          {" "}
           <input
             className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
             type="text"
             placeholder="Email"
-            {...register("email", { required: "this is reqired" })}
+            {...register("email", {
+              required: true,
+              pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+            })}
           />
+          {errors.email && errors.email.type === "required" && (
+            <p className="pr-4 text-xl text-right text-slate-50">
+              Email is required.
+            </p>
+          )}
+          {errors.email && errors.email.type === "pattern" && (
+            <p className="pr-4 text-xl text-right text-slate-50">
+              Email is not valid.
+            </p>
+          )}
           <input
             className="p-8 mt-8 text-white text-right m-2 h-20 bg-slate-700 bg-opacity-50 rounded-2xl"
             type="password"
             placeholder="Password"
+            id="password"
             {...register("pass1", {
-              required: "this is reqired",
-              minLength: { value: 8, message: "Minimun Length is 8" },
+              required: true,
+              minLength: 6,
             })}
           />
-          <p className="pr-4 text-xl text-right text-slate-50">
-            {errors.pass1?.message}
-          </p>
+          {errors?.pass1?.type === "required" && (
+            <p className="pr-4 text-xl text-right text-slate-50">
+              This field is required
+            </p>
+          )}
+          {errors?.pass1?.type === "minLength" && (
+            <p className="pr-4 text-xl text-right text-slate-50">
+              Password too short
+            </p>
+          )}
           <div className="flex justify-between">
-            <label className="p-8 pl-4 text-slate-400 text-2xl" htmlFor="">
+            <label
+              className="p-8 pl-4 text-slate-400 text-2xl"
+              htmlFor="remember"
+            >
               <input
                 className="mr-4"
                 type="checkbox"
